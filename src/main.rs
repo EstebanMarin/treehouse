@@ -1,5 +1,18 @@
 use std::io::stdin;
 
+struct Visitor {
+    name: String,
+    greeting: String
+}
+
+impl Visitor {
+    fn new(name: &str, greeting: &str) -> Self {
+	Self {
+	    name: name.to_lowercase(),
+	    greeting: greeting.to_lowercase()
+	}
+    }
+}
 
 fn whats_your_name() -> String {
     let mut your_name: String = String::new();
@@ -11,7 +24,7 @@ fn whats_your_name() -> String {
         .to_lowercase()
 }
 
-fn main() {
+fn basic_example() {
     let visitor_list: [&str;4] = ["esteban", "giselle", "jacobo", "julieta"];
     println!("Whats your name?");
     let name: String = whats_your_name();
@@ -27,5 +40,10 @@ fn main() {
     } else {
 	println!("Sorry, you arent on the list");
     }
+}
+
+fn main() {
+    
+   basic_example();
 }
 
