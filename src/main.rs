@@ -8,11 +8,11 @@ struct Visitor {
 }
 
 impl Visitor {
-    fn new(name: &str) -> Self {
+    fn new(name: &str, action: VisitorAction, age: i8) -> Self {
 	Self {
 	    name: name.to_lowercase(),
-	    action: VisitorAction::Probation,
-	    age: 0
+	    action,
+	    age
 	}
     }
 }
@@ -54,14 +54,16 @@ fn basic_example() {
 }
 
 fn using_struct() {
-    let jacobo= Visitor::new("jacobo");
-    let giselle = Visitor::new("giselle");
-    let julieta = Visitor::new("julieta");
+    let jacobo= Visitor::new("jacobo", VisitorAction::Accept, 9);
+    let giselle = Visitor::new("giselle", VisitorAction::AcceptWithNote { note: String::from("Loves music") }, 42 );
+    let julieta = Visitor::new("julieta", VisitorAction::Accept, 6);
+    let esteban = Visitor::new("esteban", VisitorAction::Probation, 39);
     println!("{:#?}", jacobo);
     let visitor_list = [
 	jacobo,
 	giselle,
 	julieta,
+	esteban,
     ];
     println!("Whats your name?");
     let name: String = whats_your_name();
