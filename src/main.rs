@@ -1,10 +1,18 @@
 use std::io::stdin;
 
-fn main() {
-    println!("Whats your name?");
+
+fn whats_your_name() -> String {
     let mut your_name: String = String::new();
     stdin()
         .read_line(&mut your_name)
         .expect("Failled to read line");
-    println!("Hello, {}", your_name);
+    return your_name
+        .trim()
+        .to_lowercase();
+}
+
+fn main() {
+    println!("Whats your name?");
+    let name = whats_your_name();
+     println!("Hello, {:?}", name);
 }
